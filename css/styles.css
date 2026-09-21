@@ -276,6 +276,66 @@ details ul { margin: 4px 0 10px; padding-left: 18px; }
 
 .acciones-form { display: flex; gap: 10px; flex-wrap: wrap; }
 
+.campo-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
+}
+.campo-inline input { width: auto; }
+
+.checkbox-ingrediente {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.filas-ingredientes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.fila-ingrediente {
+  display: grid;
+  grid-template-columns: 2fr 0.8fr 0.9fr 1.3fr auto;
+  gap: 6px;
+  align-items: center;
+}
+.fila-ingrediente input, .fila-ingrediente select {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.campo-cole-dia {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 10px;
+}
+.campo-cole-dia label {
+  width: 130px;
+  flex-shrink: 0;
+  text-transform: capitalize;
+  font-weight: 500 !important;
+}
+.campo-cole-dia input { flex: 1; }
+
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 8px 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  resize: vertical;
+}
+
 .lista-perfiles {
   max-width: 640px;
   margin-top: 24px;
@@ -331,4 +391,8 @@ details ul { margin: 4px 0 10px; padding-left: 18px; }
   .app-header { flex-direction: column; align-items: stretch; }
   .selector-perfil { justify-content: stretch; }
   .selector-perfil select { flex: 1; }
+  .fila-ingrediente { grid-template-columns: 1fr 1fr; }
+  .fila-ingrediente input:first-child { grid-column: 1 / -1; }
+  .campo-cole-dia { flex-direction: column !important; align-items: stretch; }
+  .campo-cole-dia label { width: auto; }
 }

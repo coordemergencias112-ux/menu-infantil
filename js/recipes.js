@@ -354,28 +354,28 @@ const RECIPES = [
   // ---------------------------------------------------------------
   // 1-5 AÑOS · CENA (ligera)
   // ---------------------------------------------------------------
-  { id: 'n15-01', nombre: 'Crema de calabacín con picatostes', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['gluten'],
+  { id: 'n15-01', nombre: 'Crema de calabacín con picatostes', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['gluten'], ligera: true,
     preparacion: 'Cuece el calabacín hasta que esté tierno y tritura hasta obtener una crema fina. Tuesta el pan cortado en dados y añádelo por encima antes de servir.',
     ingredientes: [ { nombre: 'Calabacín', cantidad: 2, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Pan', cantidad: 1, unidad: 'rebanada', categoria: 'Cereales y legumbres' } ] },
-  { id: 'n15-02', nombre: 'Tortilla francesa con puré de patata', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['huevo'],
+  { id: 'n15-02', nombre: 'Tortilla francesa con puré de patata', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['huevo'], ligera: true,
     preparacion: 'Bate el huevo y cuaja en una sartén formando una tortilla francesa. Cuece la patata y hazla puré chafándola con un tenedor.',
     ingredientes: [ { nombre: 'Huevo', cantidad: 2, unidad: 'ud', categoria: 'Lácteos y huevos' }, { nombre: 'Patata', cantidad: 2, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
-  { id: 'n15-03', nombre: 'Sopa de pollo con fideos', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['pollo', 'gluten'],
+  { id: 'n15-03', nombre: 'Sopa de pollo con fideos', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['pollo', 'gluten'], ligera: true,
     preparacion: 'Cuece el pollo troceado en agua o caldo, añade los fideos los últimos 5 minutos y cuece hasta que estén blandos.',
     ingredientes: [ { nombre: 'Pechuga de pollo', cantidad: 50, unidad: 'g', categoria: 'Carnes y pescados' }, { nombre: 'Fideos finos', cantidad: 40, unidad: 'g', categoria: 'Cereales y legumbres' } ] },
-  { id: 'n15-04', nombre: 'Puré de verduras con queso fresco', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['lacteos'],
+  { id: 'n15-04', nombre: 'Puré de verduras con queso fresco', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['lacteos'], ligera: true,
     preparacion: 'Cuece la zanahoria y el puerro hasta que estén tiernos y tritura con el queso fresco hasta obtener una crema.',
     ingredientes: [ { nombre: 'Zanahoria', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Puerro', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Queso fresco tipo Burgos', cantidad: 30, unidad: 'g', categoria: 'Lácteos y huevos' } ] },
-  { id: 'n15-05', nombre: 'Revuelto de huevo con espinacas', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['huevo', 'espinacas'],
+  { id: 'n15-05', nombre: 'Revuelto de huevo con espinacas', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['huevo', 'espinacas'], ligera: true,
     preparacion: 'Saltea las espinacas en una sartén con un poco de aceite hasta que reduzcan, añade el huevo batido y cuaja removiendo a fuego suave.',
     ingredientes: [ { nombre: 'Huevo', cantidad: 2, unidad: 'ud', categoria: 'Lácteos y huevos' }, { nombre: 'Espinacas', cantidad: 100, unidad: 'g', categoria: 'Frutas y verduras' } ] },
-  { id: 'n15-06', nombre: 'Crema de calabaza con pan tostado', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['gluten'],
+  { id: 'n15-06', nombre: 'Crema de calabaza con pan tostado', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['gluten'], ligera: true,
     preparacion: 'Cuece la calabaza hasta que esté tierna y tritura hasta obtener una crema fina. Tuesta el pan y sirve acompañando o troceado por encima.',
     ingredientes: [ { nombre: 'Calabaza', cantidad: 200, unidad: 'g', categoria: 'Frutas y verduras' }, { nombre: 'Pan', cantidad: 1, unidad: 'rebanada', categoria: 'Cereales y legumbres' } ] },
-  { id: 'n15-07', nombre: 'Yogur con fruta y cereales', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['lacteos'],
+  { id: 'n15-07', nombre: 'Yogur con fruta y cereales', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['lacteos'], ligera: true,
     preparacion: 'Corta el plátano en rodajas y mézclalo con el yogur natural y los copos de avena justo antes de servir.',
     ingredientes: [ { nombre: 'Yogur natural', cantidad: 1, unidad: 'ud', categoria: 'Lácteos y huevos' }, { nombre: 'Plátano', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Copos de avena', cantidad: 20, unidad: 'g', categoria: 'Cereales y legumbres' } ] },
-  { id: 'n15-08', nombre: 'Pescado blanco al horno con puré de zanahoria', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['pescado'],
+  { id: 'n15-08', nombre: 'Pescado blanco al horno con puré de zanahoria', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['pescado'], ligera: true,
     preparacion: 'Hornea la merluza a 180°C durante 12-15 minutos con un chorrito de aceite. Cuece la zanahoria y hazla puré chafándola con un tenedor.',
     ingredientes: [ { nombre: 'Merluza', cantidad: 80, unidad: 'g', categoria: 'Carnes y pescados' }, { nombre: 'Zanahoria', cantidad: 2, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
   { id: 'n15-09', nombre: 'Croquetas caseras de pollo con ensalada', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['pollo', 'gluten', 'lacteos'],
@@ -384,24 +384,90 @@ const RECIPES = [
   { id: 'n15-10', nombre: 'Sándwich integral de pavo y queso con tomate', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['pavo', 'gluten', 'lacteos', 'tomate'],
     preparacion: 'Monta el sándwich colocando el pavo, el queso y el tomate en rodajas entre las dos rebanadas de pan integral.',
     ingredientes: [ { nombre: 'Pan de molde integral', cantidad: 2, unidad: 'rebanada', categoria: 'Cereales y legumbres' }, { nombre: 'Pechuga de pavo cocida', cantidad: 40, unidad: 'g', categoria: 'Carnes y pescados' }, { nombre: 'Queso en lonchas', cantidad: 1, unidad: 'ud', categoria: 'Lácteos y huevos' }, { nombre: 'Tomate', cantidad: 0.5, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
-  { id: 'n15-11', nombre: 'Crema de zanahoria con queso fresco', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['lacteos'],
+  { id: 'n15-11', nombre: 'Crema de zanahoria con queso fresco', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['lacteos'], ligera: true,
     preparacion: 'Cuece la zanahoria hasta que esté tierna y tritura con el queso fresco hasta obtener una crema fina.',
     ingredientes: [ { nombre: 'Zanahoria', cantidad: 3, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Queso fresco tipo Burgos', cantidad: 30, unidad: 'g', categoria: 'Lácteos y huevos' } ] },
   { id: 'n15-12', nombre: 'Ensalada templada de pasta con atún', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['pescado', 'gluten', 'tomate'],
     preparacion: 'Cuece la pasta, escúrrela y mézclala templada con el atún desmenuzado y el tomate troceado.',
     ingredientes: [ { nombre: 'Pasta', cantidad: 60, unidad: 'g', categoria: 'Cereales y legumbres' }, { nombre: 'Atún al natural', cantidad: 80, unidad: 'g', categoria: 'Carnes y pescados' }, { nombre: 'Tomate', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
-  { id: 'n15-13', nombre: 'Puré de coliflor con jamón cocido', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['coliflor'],
+  { id: 'n15-13', nombre: 'Puré de coliflor con jamón cocido', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['coliflor'], ligera: true,
     preparacion: 'Cuece la coliflor hasta que esté tierna y tritura hasta obtener una crema fina. Añade el jamón cocido cortado en trocitos por encima.',
     ingredientes: [ { nombre: 'Coliflor', cantidad: 200, unidad: 'g', categoria: 'Frutas y verduras' }, { nombre: 'Jamón cocido', cantidad: 30, unidad: 'g', categoria: 'Carnes y pescados' } ] },
-  { id: 'n15-14', nombre: 'Tortitas de avena y plátano', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['huevo'],
+  { id: 'n15-14', nombre: 'Tortitas de avena y plátano', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['huevo'], ligera: true,
     preparacion: 'Chafa el plátano con un tenedor y mézclalo con el huevo batido y los copos de avena hasta formar una masa. Cocina pequeñas tortitas en una sartén antiadherente por ambos lados.',
     ingredientes: [ { nombre: 'Copos de avena', cantidad: 40, unidad: 'g', categoria: 'Cereales y legumbres' }, { nombre: 'Plátano', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Huevo', cantidad: 1, unidad: 'ud', categoria: 'Lácteos y huevos' } ] },
-  { id: 'n15-15', nombre: 'Crema de puerro con picatostes', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['puerro', 'gluten'],
+  { id: 'n15-15', nombre: 'Crema de puerro con picatostes', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['puerro', 'gluten'], ligera: true,
     preparacion: 'Cuece el puerro hasta que esté tierno y tritura hasta obtener una crema fina. Tuesta el pan cortado en dados y añádelo por encima.',
     ingredientes: [ { nombre: 'Puerro', cantidad: 2, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Pan', cantidad: 1, unidad: 'rebanada', categoria: 'Cereales y legumbres' } ] },
   { id: 'n15-16', nombre: 'Wrap integral de pollo y verduras', grupoEdad: '1-5', comida: 'cena', textura: 'Sólido', etiquetas: ['pollo', 'gluten', 'tomate'],
     preparacion: 'Rellena la tortilla integral con el pollo cocido troceado, la lechuga y el tomate, y enróllala bien apretada.',
     ingredientes: [ { nombre: 'Tortilla de trigo integral', cantidad: 1, unidad: 'ud', categoria: 'Cereales y legumbres' }, { nombre: 'Pechuga de pollo cocida', cantidad: 50, unidad: 'g', categoria: 'Carnes y pescados' }, { nombre: 'Lechuga', cantidad: 1, unidad: 'puñado', categoria: 'Frutas y verduras' }, { nombre: 'Tomate', cantidad: 0.5, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+
+  // ---------------------------------------------------------------
+  // 6-9 MESES · MERIENDA (puré de fruta)
+  // ---------------------------------------------------------------
+  { id: 'm69-01', nombre: 'Puré de manzana', grupoEdad: '6-9', comida: 'merienda', textura: 'Triturado fino', etiquetas: ['manzana'],
+    preparacion: 'Cuece la manzana pelada y troceada con un poco de agua hasta que esté tierna. Tritura hasta obtener un puré fino.',
+    ingredientes: [ { nombre: 'Manzana', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+  { id: 'm69-02', nombre: 'Puré de pera', grupoEdad: '6-9', comida: 'merienda', textura: 'Triturado fino', etiquetas: [],
+    preparacion: 'Cuece la pera pelada y troceada con un poco de agua hasta que esté tierna. Tritura hasta obtener un puré fino.',
+    ingredientes: [ { nombre: 'Pera', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+  { id: 'm69-03', nombre: 'Puré de plátano', grupoEdad: '6-9', comida: 'merienda', textura: 'Triturado fino', etiquetas: [],
+    preparacion: 'Chafa el plátano maduro con un tenedor hasta obtener un puré fino y sin grumos.',
+    ingredientes: [ { nombre: 'Plátano', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+  { id: 'm69-04', nombre: 'Puré de manzana y pera', grupoEdad: '6-9', comida: 'merienda', textura: 'Triturado fino', etiquetas: ['manzana'],
+    preparacion: 'Cuece la manzana y la pera peladas y troceadas hasta que estén tiernas. Tritura hasta obtener un puré fino.',
+    ingredientes: [ { nombre: 'Manzana', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Pera', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+
+  // ---------------------------------------------------------------
+  // 9-12 MESES · MERIENDA
+  // ---------------------------------------------------------------
+  { id: 'm912-01', nombre: 'Plátano chafado con yogur natural', grupoEdad: '9-12', comida: 'merienda', textura: 'Chafado con tenedor', etiquetas: ['lacteos'],
+    preparacion: 'Chafa el plátano con un tenedor y mézclalo con el yogur natural.',
+    ingredientes: [ { nombre: 'Plátano', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Yogur natural', cantidad: 1, unidad: 'ud', categoria: 'Lácteos y huevos' } ] },
+  { id: 'm912-02', nombre: 'Manzana asada chafada', grupoEdad: '9-12', comida: 'merienda', textura: 'Chafado con tenedor', etiquetas: ['manzana'],
+    preparacion: 'Hornea la manzana entera a 180°C durante 20-25 minutos hasta que esté blanda. Pélala y chafa la pulpa con un tenedor.',
+    ingredientes: [ { nombre: 'Manzana', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+  { id: 'm912-03', nombre: 'Pera chafada con galleta María', grupoEdad: '9-12', comida: 'merienda', textura: 'Chafado con tenedor', etiquetas: ['gluten'],
+    preparacion: 'Chafa la pera madura con un tenedor. Desmenuza la galleta y mézclala con el puré justo antes de servir.',
+    ingredientes: [ { nombre: 'Pera', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Galleta María', cantidad: 1, unidad: 'ud', categoria: 'Cereales y legumbres' } ] },
+  { id: 'm912-04', nombre: 'Aguacate chafado sobre tostada blanda', grupoEdad: '9-12', comida: 'merienda', textura: 'Chafado con tenedor', etiquetas: ['gluten'],
+    preparacion: 'Chafa el aguacate con un tenedor y extiéndelo sobre pan tierno cortado en trocitos pequeños.',
+    ingredientes: [ { nombre: 'Aguacate', cantidad: 0.5, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Pan', cantidad: 1, unidad: 'rebanada', categoria: 'Cereales y legumbres' } ] },
+
+  // ---------------------------------------------------------------
+  // 1-5 AÑOS · MERIENDA
+  // ---------------------------------------------------------------
+  { id: 'm15-01', nombre: 'Bocadillo de jamón y queso', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: ['gluten', 'lacteos'],
+    preparacion: 'Rellena el pan con el jamón cocido y el queso.',
+    ingredientes: [ { nombre: 'Pan', cantidad: 1, unidad: 'ud', categoria: 'Cereales y legumbres' }, { nombre: 'Jamón cocido', cantidad: 20, unidad: 'g', categoria: 'Carnes y pescados' }, { nombre: 'Queso en lonchas', cantidad: 1, unidad: 'ud', categoria: 'Lácteos y huevos' } ] },
+  { id: 'm15-02', nombre: 'Bocadillo de pavo', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: ['pavo', 'gluten'],
+    preparacion: 'Rellena el pan con la pechuga de pavo cocida.',
+    ingredientes: [ { nombre: 'Pan', cantidad: 1, unidad: 'ud', categoria: 'Cereales y legumbres' }, { nombre: 'Pechuga de pavo cocida', cantidad: 20, unidad: 'g', categoria: 'Carnes y pescados' } ] },
+  { id: 'm15-03', nombre: 'Fruta de temporada', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: [],
+    preparacion: 'Lava y corta la fruta en trozos del tamaño adecuado para que la coma con la mano o con un tenedor.',
+    ingredientes: [ { nombre: 'Fruta de temporada', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+  { id: 'm15-04', nombre: 'Yogur con galletas', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: ['lacteos', 'gluten'],
+    preparacion: 'Sirve el yogur con las galletas para untar o desmenuzar por encima.',
+    ingredientes: [ { nombre: 'Yogur natural', cantidad: 1, unidad: 'ud', categoria: 'Lácteos y huevos' }, { nombre: 'Galletas María', cantidad: 2, unidad: 'ud', categoria: 'Cereales y legumbres' } ] },
+  { id: 'm15-05', nombre: 'Batido de plátano con leche', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: ['lacteos'],
+    preparacion: 'Tritura el plátano con la leche hasta obtener un batido homogéneo.',
+    ingredientes: [ { nombre: 'Plátano', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Leche', cantidad: 150, unidad: 'ml', categoria: 'Lácteos y huevos' } ] },
+  { id: 'm15-06', nombre: 'Palitos de zanahoria y pepino con hummus', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: ['legumbres'],
+    preparacion: 'Corta la zanahoria y el pepino en palitos y sírvelos para mojar en el hummus.',
+    ingredientes: [ { nombre: 'Zanahoria', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Pepino', cantidad: 0.5, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Hummus', cantidad: 40, unidad: 'g', categoria: 'Otros' } ] },
+  { id: 'm15-07', nombre: 'Tortitas de avena caseras', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: ['huevo'],
+    preparacion: 'Bate el huevo con los copos de avena y el plátano chafado. Cocina pequeñas tortitas en una sartén antiadherente por ambos lados.',
+    ingredientes: [ { nombre: 'Copos de avena', cantidad: 30, unidad: 'g', categoria: 'Cereales y legumbres' }, { nombre: 'Huevo', cantidad: 1, unidad: 'ud', categoria: 'Lácteos y huevos' }, { nombre: 'Plátano', cantidad: 1, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+  { id: 'm15-08', nombre: 'Macedonia de frutas', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: [],
+    preparacion: 'Corta la fruta en trozos pequeños y mézclala en un bol.',
+    ingredientes: [ { nombre: 'Manzana', cantidad: 0.5, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Plátano', cantidad: 0.5, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Pera', cantidad: 0.5, unidad: 'ud', categoria: 'Frutas y verduras' } ] },
+  { id: 'm15-09', nombre: 'Pan con tomate y aceite', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: ['gluten', 'tomate'],
+    preparacion: 'Unta el pan con el tomate rallado y añade un chorrito de aceite de oliva.',
+    ingredientes: [ { nombre: 'Pan', cantidad: 1, unidad: 'ud', categoria: 'Cereales y legumbres' }, { nombre: 'Tomate', cantidad: 0.5, unidad: 'ud', categoria: 'Frutas y verduras' }, { nombre: 'Aceite de oliva virgen extra', cantidad: 1, unidad: 'cucharadita', categoria: 'Otros' } ] },
+  { id: 'm15-10', nombre: 'Queso fresco con membrillo', grupoEdad: '1-5', comida: 'merienda', textura: 'Sólido', etiquetas: ['lacteos'],
+    preparacion: 'Corta el queso fresco en dados y sírvelo con el membrillo en trocitos.',
+    ingredientes: [ { nombre: 'Queso fresco tipo Burgos', cantidad: 40, unidad: 'g', categoria: 'Lácteos y huevos' }, { nombre: 'Dulce de membrillo', cantidad: 20, unidad: 'g', categoria: 'Otros' } ] },
 ];
 
 // Alérgenos que se pueden excluir de forma estricta
@@ -439,3 +505,19 @@ const ETAPAS = {
 
 const DIAS_SEMANA = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
 const DIAS_SEMANA_LABEL = { lunes: 'Lunes', martes: 'Martes', miercoles: 'Miércoles', jueves: 'Jueves', viernes: 'Viernes', sabado: 'Sábado', domingo: 'Domingo' };
+
+// Tipos de comida planificables, en el orden en que se muestran
+const TIPOS_COMIDA = ['comida', 'merienda', 'cena'];
+const TIPOS_COMIDA_LABEL = { comida: 'Comida', merienda: 'Merienda', cena: 'Cena' };
+
+// Palabras clave para clasificar el plato del comedor escolar y sugerir una cena equilibrada
+const REGLAS_EQUILIBRIO = {
+  proteinas: {
+    pollo: ['pollo', 'pavo'],
+    ternera: ['ternera', 'carne', 'filete', 'albóndiga', 'albondiga', 'ragout'],
+    pescado: ['pescado', 'merluza', 'salmón', 'salmon', 'lenguado', 'bacalao', 'atún', 'atun', 'dorada', 'gallo'],
+    huevo: ['huevo', 'tortilla'],
+    legumbres: ['lentejas', 'garbanzos', 'alubias', 'judías blancas', 'judias blancas', 'potaje', 'fabada'],
+  },
+  copioso: ['hamburguesa', 'frito', 'fritos', 'empanadilla', 'croqueta', 'pizza', 'rebozado', 'san jacobo', 'nugget', 'patatas fritas', 'cocido', 'lasaña', 'canelones'],
+};
