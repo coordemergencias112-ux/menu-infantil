@@ -276,6 +276,17 @@ details ul { margin: 4px 0 10px; padding-left: 18px; }
 
 .acciones-form { display: flex; gap: 10px; flex-wrap: wrap; }
 
+.campo-foto-ia {
+  background: var(--color-fondo);
+  border: 1px dashed var(--color-borde);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.estado-ia { margin-top: 8px; margin-bottom: 0; font-style: italic; }
+.inspiracion-recetas ul { margin: 4px 0 0; padding-left: 18px; }
+.inspiracion-recetas li { font-size: 0.85rem; }
+
 .campo-inline {
   display: flex;
   align-items: center;

@@ -1283,6 +1283,106 @@ function renderVistaPerfil(perfilVisible) {
 }
 
 // ---------------------------------------------------------------
+// IA en el navegador (100% gratis, sin cuentas ni servidores)
+// - Foto → detectar ingrediente (TensorFlow.js + MobileNet, modelo genérico)
+// - PDF del cole → detectar días y platos (pdf.js, lectura de texto)
+// ---------------------------------------------------------------
+function cargarScript(src) {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error('No se pudo cargar ' + src));
+    document.head.appendChild(s);
+  });
+}
+
+const TRADUCCION_INGREDIENTES = {
+  banana: 'Plátano', zucchini: 'Calabacín', cucumber: 'Pepino', broccoli: 'Brócoli', cauliflower: 'Coliflor',
+  'bell pepper': 'Pimiento', mushroom: 'Champiñón', 'head cabbage': 'Repollo', artichoke: 'Alcachofa',
+  carrot: 'Zanahoria', corn: 'Maíz', lemon: 'Limón', orange: 'Naranja', pineapple: 'Piña', pomegranate: 'Granada',
+  fig: 'Higo', strawberry: 'Fresa', 'granny smith': 'Manzana', potato: 'Patata', 'sweet potato': 'Boniato',
+  onion: 'Cebolla', garlic: 'Ajo', tomato: 'Tomate', avocado: 'Aguacate', eggplant: 'Berenjena', pea: 'Guisante',
+  squash: 'Calabaza', pretzel: 'Pan', bagel: 'Pan', 'french loaf': 'Pan', cheeseburger: 'Hamburguesa',
+  pizza: 'Pizza', egg: 'Huevo', pomelo: 'Pomelo', custard_apple: 'Chirimoya',
+};
+
+function traducirEtiquetaIngrediente(className) {
+  const c = className.toLowerCase();
+  for (const [clave, valor] of Object.entries(TRADUCCION_INGREDIENTES)) {
+    if (c.includes(clave)) return valor;
+  }
+  const primera = className.split(',')[0].trim();
+  return primera.charAt(0).toUpperCase() + primera.slice(1);
+}
+
+async function detectarIngredienteEnFoto(archivo) {
+  await cargarScript('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js');
+  await cargarScript('https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js');
+  if (!window.__modeloIngredientes) window.__modeloIngredientes = await window.mobilenet.load();
+
+  const img = document.createElement('img');
+  const url = URL.createObjectURL(archivo);
+  img.src = url;
+  await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; });
+  const predicciones = await window.__modeloIngredientes.classify(img);
+  URL.revokeObjectURL(url);
+  return predicciones.map(p => ({ nombre: traducirEtiquetaIngrediente(p.className), confianza: p.probability }));
+}
+
+function recetasQueUsanIngrediente(nombreIngrediente) {
+  const t = nombreIngrediente.toLowerCase();
+  const todas = RECIPES.concat(state.recetasPropias || []);
+  return todas.filter(r => r.ingredientes.some(ing => ing.nombre.toLowerCase().includes(t))).slice(0, 6);
+}
+
+async function extraerLineasPDF(archivo) {
+  await cargarScript('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js');
+  window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+  const buffer = await archivo.arrayBuffer();
+  const pdf = await window.pdfjsLib.getDocument({ data: buffer }).promise;
+  const lineas = [];
+  for (let n = 1; n <= pdf.numPages; n++) {
+    const pagina = await pdf.getPage(n);
+    const contenido = await pagina.getTextContent();
+    let lineaActual = '';
+    let yAnterior = null;
+    contenido.items.forEach(item => {
+      const y = item.transform[5];
+      if (yAnterior !== null && Math.abs(y - yAnterior) > 2) {
+        if (lineaActual.trim()) lineas.push(lineaActual.trim());
+        lineaActual = '';
+      }
+      lineaActual += item.str + ' ';
+      yAnterior = y;
+    });
+    if (lineaActual.trim()) lineas.push(lineaActual.trim());
+  }
+  return lineas;
+}
+
+const NOMBRES_DIA_REGEX = /\b(lunes|martes|mi[ée]rcoles|jueves|viernes)\b/i;
+
+// Heurística sencilla: agrupa el texto en bloques usando los nombres de los días
+// como separadores. No entiende tablas complejas — es un primer borrador para revisar a mano.
+function agruparPlatosPorBloque(lineas) {
+  const bloques = [];
+  let actual = [];
+  lineas.forEach(linea => {
+    const esMarcaDia = NOMBRES_DIA_REGEX.test(linea) && linea.length < 40;
+    if (esMarcaDia) {
+      if (actual.length) bloques.push(actual.join(' ').replace(/\s+/g, ' ').trim());
+      actual = [];
+    } else {
+      actual.push(linea);
+    }
+  });
+  if (actual.length) bloques.push(actual.join(' ').replace(/\s+/g, ' ').trim());
+  return bloques.filter(b => b.length > 3);
+}
+
+// ---------------------------------------------------------------
 // Vista: Mis recetas (recetas propias, con prioridad sobre las genéricas)
 // ---------------------------------------------------------------
 function renderVistaRecetas() {
@@ -1390,6 +1490,63 @@ function renderFormRecetaPropia(receta) {
   const grupoIngredientes = document.createElement('div');
   grupoIngredientes.className = 'campo';
   grupoIngredientes.innerHTML = '<label>Ingredientes</label>';
+
+  const grupoFoto = document.createElement('div');
+  grupoFoto.className = 'campo-foto-ia';
+  const btnFoto = document.createElement('button');
+  btnFoto.type = 'button';
+  btnFoto.className = 'btn btn-secundario';
+  btnFoto.textContent = '📷 Detectar ingrediente por foto';
+  const inputFoto = document.createElement('input');
+  inputFoto.type = 'file';
+  inputFoto.accept = 'image/*';
+  inputFoto.capture = 'environment';
+  inputFoto.style.display = 'none';
+  const estadoFoto = document.createElement('p');
+  estadoFoto.className = 'ayuda estado-ia';
+  const inspiracion = document.createElement('div');
+  inspiracion.className = 'inspiracion-recetas';
+  btnFoto.addEventListener('click', () => inputFoto.click());
+  inputFoto.addEventListener('change', async () => {
+    const archivo = inputFoto.files[0];
+    if (!archivo) return;
+    estadoFoto.textContent = '🔍 Analizando foto... (la primera vez tarda un poco en cargar el modelo)';
+    inspiracion.innerHTML = '';
+    try {
+      const predicciones = await detectarIngredienteEnFoto(archivo);
+      const mejor = predicciones[0];
+      estadoFoto.textContent = `Detectado: "${mejor.nombre}" (${Math.round(mejor.confianza * 100)}% de confianza) — revísalo y ajústalo si hace falta.`;
+      let filaDestino = filas.find(f => !f.inputNombre.value.trim());
+      if (!filaDestino) { agregarFila(null); filaDestino = filas[filas.length - 1]; }
+      filaDestino.inputNombre.value = mejor.nombre;
+      filaDestino.inputNombre.focus();
+      const sugerencias = recetasQueUsanIngrediente(mejor.nombre);
+      if (sugerencias.length > 0) {
+        const titulo = document.createElement('p');
+        titulo.className = 'subtitulo-receta';
+        titulo.textContent = `💡 Recetas que ya llevan "${mejor.nombre}" (para inspirarte)`;
+        inspiracion.appendChild(titulo);
+        const ul = document.createElement('ul');
+        sugerencias.forEach(r => {
+          const li = document.createElement('li');
+          li.textContent = r.nombre;
+          ul.appendChild(li);
+        });
+        inspiracion.appendChild(ul);
+      }
+    } catch (e) {
+      console.warn('Fallo detectando ingrediente', e);
+      estadoFoto.textContent = 'No se ha podido analizar la foto (revisa tu conexión). Puedes escribir el ingrediente a mano.';
+    }
+  });
+  grupoFoto.append(btnFoto, inputFoto, estadoFoto, inspiracion);
+  grupoIngredientes.appendChild(grupoFoto);
+
+  const notaFoto = document.createElement('p');
+  notaFoto.className = 'ayuda';
+  notaFoto.textContent = 'Reconocimiento automático gratuito con un modelo genérico: acierta bien con frutas y verduras claras, pero conviene revisar el resultado.';
+  grupoIngredientes.appendChild(notaFoto);
+
   const contFilas = document.createElement('div');
   contFilas.className = 'filas-ingredientes';
   grupoIngredientes.appendChild(contFilas);
@@ -1549,6 +1706,26 @@ function renderVistaCole(perfil) {
   grupoMes.appendChild(inputMes);
   wrap.appendChild(grupoMes);
 
+  const grupoPDF = document.createElement('div');
+  grupoPDF.className = 'campo-foto-ia';
+  const btnPDF = document.createElement('button');
+  btnPDF.type = 'button';
+  btnPDF.className = 'btn btn-secundario';
+  btnPDF.textContent = '📄 Rellenar desde un PDF';
+  const inputPDF = document.createElement('input');
+  inputPDF.type = 'file';
+  inputPDF.accept = 'application/pdf';
+  inputPDF.style.display = 'none';
+  const estadoPDF = document.createElement('p');
+  estadoPDF.className = 'ayuda estado-ia';
+  btnPDF.addEventListener('click', () => inputPDF.click());
+  grupoPDF.append(btnPDF, inputPDF, estadoPDF);
+  const ayudaPDF = document.createElement('p');
+  ayudaPDF.className = 'ayuda';
+  ayudaPDF.textContent = 'Lectura automática del texto del PDF: rellena los días en orden y siempre puedes revisarlos y corregirlos antes de guardar.';
+  grupoPDF.appendChild(ayudaPDF);
+  wrap.appendChild(grupoPDF);
+
   const form = document.createElement('form');
   form.className = 'form-perfil';
   const dias = diasLaborablesDelMes(mesColeSeleccionado);
@@ -1566,6 +1743,28 @@ function renderVistaCole(perfil) {
     campo.appendChild(input);
     inputsPorFecha[fecha] = input;
     form.appendChild(campo);
+  });
+
+  inputPDF.addEventListener('change', async () => {
+    const archivo = inputPDF.files[0];
+    if (!archivo) return;
+    estadoPDF.textContent = '🔍 Leyendo el PDF...';
+    try {
+      const lineas = await extraerLineasPDF(archivo);
+      const bloques = agruparPlatosPorBloque(lineas);
+      if (bloques.length === 0) {
+        estadoPDF.textContent = 'No se ha detectado texto reconocible en el PDF. Prueba a escribir los platos a mano.';
+        return;
+      }
+      const huecosVacios = dias.filter(f => !inputsPorFecha[f].value.trim());
+      const destino = huecosVacios.length > 0 ? huecosVacios : dias;
+      let n = Math.min(bloques.length, destino.length);
+      destino.slice(0, n).forEach((fecha, i) => { inputsPorFecha[fecha].value = bloques[i]; });
+      estadoPDF.textContent = `Se han rellenado ${n} día(s) a partir del PDF. Revisa el texto de cada uno antes de guardar — la lectura automática puede confundirse con tablas o columnas.`;
+    } catch (e) {
+      console.warn('Fallo leyendo el PDF', e);
+      estadoPDF.textContent = 'No se ha podido leer el PDF (revisa tu conexión, o que el archivo tenga texto y no sea solo una imagen escaneada).';
+    }
   });
 
   const acciones = document.createElement('div');
